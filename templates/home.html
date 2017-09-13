@@ -1,0 +1,28 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+
+</head>
+<a>
+    <a href="{% url 'kvitok-add' %}"><button>Добавить новый акт</button></a>
+<h2>Акты установки/перемещения системных блоков:</h2>
+  <table align="left" width="">
+  {% for kvitok in kvitki %}
+      <div>
+          <tr align="left">
+              <th><a href="{% url 'kvitok-detail' kvitok_id=kvitok.id %}">{{ kvitok.id }} {{ kvitok.name }}</a></th>
+              <th><i>{{ kvitok.date }}</i></th>
+              <th>{{ kvitok.description }}</th>
+          </tr>
+          <tr></tr>
+
+
+      </div>
+
+  {% endfor %}
+  </table>
+</body>
+</html>
