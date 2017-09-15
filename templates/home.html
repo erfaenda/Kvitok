@@ -13,7 +13,7 @@
   {% for kvitok in kvitki %}
       <div>
           <tr align="left">
-              <th><a href="{% url 'kvitok-detail' kvitok_id=kvitok.id %}">{{ kvitok.id }} {{ kvitok.name }}</a></th>
+              <th><a href="{% url 'kvitok-detail' kvitok_id=kvitok.id %}">{{ kvitok.name }}</a></th>
               <th><i>{{ kvitok.date }}</i></th>
               <th>{{ kvitok.description }}</th>
           </tr>
