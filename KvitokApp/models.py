@@ -33,7 +33,7 @@ class ZapisTable(models.Model):
     class Meta:
         verbose_name = 'Квиток'
         verbose_name_plural = 'Квитки'
-        ordering = ['name'] # сортировка по имени
+        ordering = ['-number_akt'] # сортировка по имени
 
     def __str__(self):
         strnumber = str(self.number_akt)

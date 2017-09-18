@@ -8,10 +8,6 @@ from django.core.urlresolvers import reverse
 # Create your views here.
 # Функция представления главной страницы
 
-kvitki = ZapisTable.objects.all()
-how_objects = len(kvitki)
-last_object = kvitki[how_objects - 1]
-
 def home(request):
     kvitki = ZapisTable.objects.all() # Запрос к базе на получение всех объектов
     return render(request, 'home.html', {'kvitki': kvitki})
@@ -26,7 +22,11 @@ def kvitok_detail(request, kvitok_id):
     return render(request, 'kvitok_detail.html', {'kvitok': kvitok})
 
 def kvitok_add(request):
-    form = KvitokAddForm(request.POST or None, initial={'number_akt': last_object})
+    kvitki = ZapisTable.objects.all()
+    how_objects = len(kvitki)
+    last_object = kvitki[how_objects - 1]
+    last_name_akt = last_object.number_akt + 1
+    form = KvitokAddForm(request.POST or None, initial={'number_akt': last_name_akt})
     if request.method == 'POST':
         if form.is_valid():
             form.save()
