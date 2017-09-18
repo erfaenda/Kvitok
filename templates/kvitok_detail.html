@@ -2,7 +2,7 @@
 {% block page %}
 <a href="{% url 'home' %}">Главная</a>
   <table align="center" border="1" width="600">
-      <caption>Перемещения системных блоков {{ kvitok.name }}</caption>
+      <caption>Акт перемещения системных блоков №{{ kvitok.number_akt }}</caption>
       <tr>
           <th colspan="2" class="TH">Инвентарный номер</th>
           <th class="TH">Имя хоста</th>
@@ -31,7 +31,7 @@
 <hr>
 &nbsp;
    <table align="center" border="1" width="600">
-      <caption>Акт перемещения системных блоков №{{ kvitok.id }}</caption>
+      <caption>Акт перемещения системных блоков №{{ kvitok.number_akt }}</caption>
       <tr>
           <th colspan="2" class="TH">Инвентарный номер</th>
           <th class="TH">Имя хоста</th>

@@ -18,7 +18,7 @@ class InfoTable(models.Model):
 
 class ZapisTable(models.Model):
     infotable = models.ForeignKey(InfoTable, on_delete=models.CASCADE, verbose_name='Информациялнные таблицы')
-    name = models.CharField(max_length=50, verbose_name='Акт№')
+    name = models.CharField(max_length=50, verbose_name='Акт№', blank=True, editable=False)
     date = models.DateField(auto_now_add=True, verbose_name='Дата')
     invent_number = models.CharField(max_length=50, verbose_name='Инвентарный номер')
     name_host = models.CharField(max_length=50, verbose_name='Имя хоста')
@@ -26,6 +26,7 @@ class ZapisTable(models.Model):
     ffrom = models.CharField(max_length=50, verbose_name='От кого')
     to = models.CharField(max_length=50, verbose_name='Кому')
     description = models.TextField(verbose_name='Примечание')
+    number_akt = models.IntegerField(verbose_name='Акт№')
 
 
 
@@ -35,4 +36,5 @@ class ZapisTable(models.Model):
         ordering = ['name'] # сортировка по имени
 
     def __str__(self):
-        return self.name
+        strnumber = str(self.number_akt)
+        return strnumber

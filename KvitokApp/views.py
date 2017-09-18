@@ -9,7 +9,8 @@ from django.core.urlresolvers import reverse
 # Функция представления главной страницы
 
 kvitki = ZapisTable.objects.all()
-last_number = len(kvitki)
+how_objects = len(kvitki)
+last_object = kvitki[how_objects - 1]
 
 def home(request):
     kvitki = ZapisTable.objects.all() # Запрос к базе на получение всех объектов
@@ -25,7 +26,7 @@ def kvitok_detail(request, kvitok_id):
     return render(request, 'kvitok_detail.html', {'kvitok': kvitok})
 
 def kvitok_add(request):
-    form = KvitokAddForm(request.POST or None, initial={'name': last_number})
+    form = KvitokAddForm(request.POST or None, initial={'number_akt': last_object})
     if request.method == 'POST':
         if form.is_valid():
             form.save()
