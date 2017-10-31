@@ -22,9 +22,8 @@ def kvitok_detail(request, kvitok_id):
     return render(request, 'kvitok_detail.html', {'kvitok': kvitok})
 
 def kvitok_add(request):
-    kvitki = ZapisTable.objects.all()
-    how_objects = len(kvitki)
-    last_object = kvitki[how_objects - 1]
+    kvitki = ZapisTable.objects.order_by("-number_akt")
+    last_object = kvitki[0]
     last_name_akt = last_object.number_akt + 1
     form = KvitokAddForm(request.POST or None, initial={'number_akt': last_name_akt})
     if request.method == 'POST':
